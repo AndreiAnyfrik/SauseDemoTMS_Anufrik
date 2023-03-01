@@ -12,44 +12,67 @@
         <maven.compiler.source>11</maven.compiler.source>
         <maven.compiler.target>11</maven.compiler.target>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <testng.version>7.7.1</testng.version>
+        <selenium.version>4.8.0</selenium.version>
+        <git.version>5.3.2</git.version>
+        <assert.jversion>3.24.2</assert.jversion>
+        <apache.version>3.12.0</apache.version>
+        <collection.sversion>4.4</collection.sversion>
+
+        <suiteXmlFile>src/test/resources/test.xml</suiteXmlFile>
     </properties>
     <dependencies>
         <!-- https://mvnrepository.com/artifact/org.testng/testng -->
         <dependency>
             <groupId>org.testng</groupId>
             <artifactId>testng</artifactId>
-            <version>7.7.1</version>
+            <version>${testng.version}</version>
         </dependency>
         <!-- https://mvnrepository.com/artifact/org.seleniumhq.selenium/selenium-java -->
         <dependency>
             <groupId>org.seleniumhq.selenium</groupId>
             <artifactId>selenium-java</artifactId>
-            <version>4.8.0</version>
+            <version>${selenium.version}</version>
         </dependency>
         <!-- https://mvnrepository.com/artifact/io.github.bonigarcia/webdrivermanager -->
         <dependency>
             <groupId>io.github.bonigarcia</groupId>
             <artifactId>webdrivermanager</artifactId>
-            <version>5.3.2</version>
+            <version>${git.version}</version>
         </dependency>
         <!-- https://mvnrepository.com/artifact/org.assertj/assertj-core -->
         <dependency>
             <groupId>org.assertj</groupId>
             <artifactId>assertj-core</artifactId>
-            <version>3.24.2</version>
+            <version>${assert.jversion}</version>
         </dependency>
         <!-- https://mvnrepository.com/artifact/org.apache.commons/commons-lang3 -->
         <dependency>
             <groupId>org.apache.commons</groupId>
             <artifactId>commons-lang3</artifactId>
-            <version>3.12.0</version>
+            <version>${apache.version}</version>
         </dependency>
         <!-- https://mvnrepository.com/artifact/org.apache.commons/commons-collections4 -->
         <dependency>
             <groupId>org.apache.commons</groupId>
             <artifactId>commons-collections4</artifactId>
-            <version>4.4</version>
+            <version>${collection.sversion}</version>
         </dependency>
     </dependencies>
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-surefire-plugin</artifactId>
+                <version>3.0.0-M7</version>
+                <configuration>
+                    <suiteXmlFiles>
+                        <suiteXmlFile>${suiteXmlFile}</suiteXmlFile>
+                    </suiteXmlFiles>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+
 
 </project>

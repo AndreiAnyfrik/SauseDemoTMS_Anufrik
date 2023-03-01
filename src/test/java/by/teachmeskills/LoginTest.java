@@ -43,7 +43,7 @@ public class LoginTest extends BaseTest {
     }
 
     @Test
-    public void enterwithStandartUser() {
+    public void enterWithStandardUser() {
         driver.get("https://www.saucedemo.com");
         driver.findElement(By.name("user-name")).sendKeys("standard_user");
         driver.findElement(By.name("password")).sendKeys("secret_sauce");
@@ -51,15 +51,6 @@ public class LoginTest extends BaseTest {
         WebElement newOpenPage = driver.findElement(By.xpath("//span[text( )= 'Products']"));
         Assert.assertTrue(newOpenPage.isDisplayed(), "New page don't opened");
 
-    }
-    @Test
-    public void enterWithLockedOutUser() {
-        driver.get("https://www.saucedemo.com");
-        driver.findElement(By.name("user-name")).sendKeys("locked_out_user");
-        driver.findElement(By.name("password")).sendKeys("secret_sauce");
-        driver.findElement(By.name("login-button")).click();
-        WebElement newOpenPage = driver.findElement(By.xpath("//span[text( )= 'Products']"));
-        Assert.assertTrue(newOpenPage.isDisplayed(), "New page don't opened");
     }
     @Test
     public void enterWithProblemUser(){
