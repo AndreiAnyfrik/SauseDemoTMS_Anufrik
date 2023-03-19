@@ -13,12 +13,12 @@ public class BaseTest {
     protected WebDriver driver;
 
     @BeforeMethod
-    public void setUp() {
+    public void setUp( ITestContext testContext) {
         WebDriverManager.chromedriver().setup();
         driver = new ChromeDriver();
         driver.manage().window().maximize();
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
-    }
+        testContext.setAttribute("driver",driver);
 
     @AfterMethod(alwaysRun = true)
     public void tearDown() {

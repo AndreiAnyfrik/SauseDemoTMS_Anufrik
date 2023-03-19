@@ -1,12 +1,16 @@
 package by.teachmeskills;
 
+import io.qameta.allure.Severity;
+import io.qameta.allure.SeverityLevel;
+import io.qameta.allure.Step;
+import io.qameta.allure.TmsLink;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
 public class LoginTest extends BaseTest {
-    @Test
+    @Test(description = "Without Name Test")
     public void withoutUserName() {
         driver.get("https://www.saucedemo.com");
         driver.findElement(By.name("user-name")).sendKeys("");
@@ -18,7 +22,7 @@ public class LoginTest extends BaseTest {
                 "Check text of message error test without user name");
     }
 
-    @Test
+    @Test(description = "Test without Password")
     public void withoutPassword() {
         driver.get("https://www.saucedemo.com");
         driver.findElement(By.name("user-name")).sendKeys("standard_user");
@@ -42,7 +46,7 @@ public class LoginTest extends BaseTest {
                 "Check text of message error test without password");
     }
 
-    @Test
+    @Test(description = "With standard User Test")
     public void enterWithStandardUser() {
         driver.get("https://www.saucedemo.com");
         driver.findElement(By.name("user-name")).sendKeys("standard_user");
