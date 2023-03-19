@@ -1,4 +1,6 @@
 package by.teachmeskills.page.util.testng;
+
+import by.teachmeskills.page.util.allure.AllureUtils;
 import org.apache.commons.io.FileUtils;
 import org.openqa.selenium.NoSuchSessionException;
 import org.openqa.selenium.OutputType;
@@ -23,7 +25,7 @@ public class TestListener implements ITestListener {
     @Override
     public void onTestSuccess(ITestResult result) {
         System.out.printf("======================================== FINISHED TEST %s Duration: %ss ========================================%n", result.getName(),
-                          getExecutionTime(result));
+                getExecutionTime(result));
     }
 
     @Override
@@ -49,26 +51,25 @@ public class TestListener implements ITestListener {
     private long getExecutionTime(ITestResult result) {
         return TimeUnit.MILLISECONDS.toSeconds(result.getEndMillis() - result.getStartMillis());
     }
-    
+
     @Override
     public void onTestFailure(ITestResult result) {
         System.out.printf("======================================== FAILED TEST %s Duration: %ss ========================================%n", result.getName(),
-                          getExecutionTime(result));
+                getExecutionTime(result));
         takeScreenshot(result);
     }
 
-    private void takeScreenshot(ITestResult result) {
+    private byte[] takeScreenshot(ITestResult result) {
         ITestContext context = result.getTestContext();
         try {
             WebDriver driver = (WebDriver) context.getAttribute("driver");
             if (driver != null) {
-                File scrFile = ((TakesScreenshot) driver).getScreenshotAs(OutputType.FILE);
-                FileUtils.moveFile(scrFile,
-                                   new File(System.getProperty("user.dir") + "/src/test/resources/screenshots/"
-                                                    + result.getMethod().getMethodName() + ".png"));
+                return AllureUtils.takeScreenshot(driver);
+            } else {
+                return new byte[]{};
             }
-        } catch (NoSuchSessionException | IllegalStateException | IOException ex) {
-            System.out.println("Screenshot was not created because of error:\n" + ex.getLocalizedMessage());
+        } catch (NoSuchSessionException | IllegalStateException ex) {
+            return new byte[]{};
         }
     }
 }

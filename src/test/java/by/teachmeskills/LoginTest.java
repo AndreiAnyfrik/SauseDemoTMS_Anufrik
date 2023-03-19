@@ -59,7 +59,7 @@ public class LoginTest extends BaseTest {
     @Test
     public void enterWithProblemUser(){
         driver.get("https://www.saucedemo.com");
-        driver.findElement(By.name("user-name")).sendKeys("problem_user");
+        driver.findElement(By.name("user-name")).sendKeys("problem_user1");
         driver.findElement(By.name("password")).sendKeys("secret_sauce");
         driver.findElement(By.name("login-button")).click();
         WebElement newOpenPage = driver.findElement(By.xpath("//span[text( )= 'Products']"));
