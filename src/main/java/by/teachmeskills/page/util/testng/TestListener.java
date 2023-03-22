@@ -1,36 +1,33 @@
 package by.teachmeskills.page.util.testng;
 
+
 import by.teachmeskills.page.util.allure.AllureUtils;
-import org.apache.commons.io.FileUtils;
+import lombok.extern.log4j.Log4j2;
 import org.openqa.selenium.NoSuchSessionException;
-import org.openqa.selenium.OutputType;
-import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
 import org.testng.ITestContext;
 import org.testng.ITestListener;
 import org.testng.ITestResult;
 
-import java.io.File;
-import java.io.IOException;
 import java.util.concurrent.TimeUnit;
 
+@Log4j2
 public class TestListener implements ITestListener {
-
 
     @Override
     public void onTestStart(ITestResult result) {
-        System.out.printf("======================================== STARTING TEST %s ========================================%n", result.getName());
+        log.info("======================================== STARTING TEST {} ========================================", result.getName());
     }
 
     @Override
     public void onTestSuccess(ITestResult result) {
-        System.out.printf("======================================== FINISHED TEST %s Duration: %ss ========================================%n", result.getName(),
-                getExecutionTime(result));
+        log.info("======================================== FINISHED TEST {} Duration: {}s ========================================", result.getName(),
+                          getExecutionTime(result));
     }
 
     @Override
     public void onTestSkipped(ITestResult result) {
-        System.out.printf("======================================== SKIPPING TEST %s ========================================%n", result.getName());
+        log.info("======================================== SKIPPING TEST {} ========================================", result.getName());
     }
 
     @Override
@@ -54,13 +51,13 @@ public class TestListener implements ITestListener {
 
     @Override
     public void onTestFailure(ITestResult result) {
-        System.out.printf("======================================== FAILED TEST %s Duration: %ss ========================================%n", result.getName(),
-                getExecutionTime(result));
+        log.info("======================================== FAILED TEST {} Duration: {}s ========================================", result.getName(),
+                          getExecutionTime(result));
         takeScreenshot(result);
     }
 
-    private byte[] takeScreenshot(ITestResult result) {
-        ITestContext context = result.getTestContext();
+    private byte[] takeScreenshot(ITestResult iTestResult) {
+        ITestContext context = iTestResult.getTestContext();
         try {
             WebDriver driver = (WebDriver) context.getAttribute("driver");
             if (driver != null) {

@@ -1,11 +1,12 @@
 package by.teachmeskills.page;
 
 import io.qameta.allure.Attachment;
+import lombok.extern.log4j.Log4j2;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import io.qameta.allure.Step;
 import org.testng.annotations.Test;
-
+@Log4j2
 public class LoginPage extends BasePage {
 
     private By USER_NAME = By.id("user-name");
@@ -28,12 +29,15 @@ public class LoginPage extends BasePage {
         driver.findElement(USER_NAME).sendKeys(userName);
         driver.findElement(PASSWORD).sendKeys(password);
         driver.findElement(LOGIN_BUTTON).click();
+        log.info("login AS {},{}",userName,userName);
         return null;
     }
     @Step("Login as standard user")
     public ProductsPage loginAsStandardUser() {
         loginAs("standard_user", "secret_sauce");
+        log.info("Login as standard_user");
         return new ProductsPage(driver);
+
     }
 
     public String getErrorText() {

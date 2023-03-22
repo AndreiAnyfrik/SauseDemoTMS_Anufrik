@@ -1,8 +1,9 @@
 package by.teachmeskills.page;
 
+import lombok.extern.log4j.Log4j2;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-
+@Log4j2
 public class CheckoutPage extends BasePage {
     private By FIRST_NAME = By.id("first-name");
     private By LAST_NAME = By.id("last-name");
@@ -26,9 +27,11 @@ public class CheckoutPage extends BasePage {
         driver.findElement(LAST_NAME).sendKeys(lastName);
         driver.findElement(ZIP_POSTAL_CODE).sendKeys(zipPostalCode);
         driver.findElement(CONTINUE_BUTTON).click();
+        log.info("Checkout as {},{},{}",firstName,lastName,zipPostalCode);
     }
     public CheckoutTwoPage checkoutAsAndrei() {
         checkoutAs("Andrei","Anufrik","20-002");
+        log.info("Checkout as Andrei");
         return new CheckoutTwoPage(driver);
     }
     public String getErrorText() {

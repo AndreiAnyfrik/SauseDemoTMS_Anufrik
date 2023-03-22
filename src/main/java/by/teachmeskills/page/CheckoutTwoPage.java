@@ -1,10 +1,11 @@
 package by.teachmeskills.page;
 
+import lombok.extern.log4j.Log4j2;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
-
+@Log4j2
 public class CheckoutTwoPage extends BasePage {
     private By CANCEL_BUTTON_TWO = By.id("cancel");
     private By FINISH_BUTTON = By.id("finish");
@@ -25,7 +26,9 @@ public class CheckoutTwoPage extends BasePage {
 
     public boolean isOpened() {
        wait.until(ExpectedConditions.visibilityOfElementLocated(PRODUCTS_TITLE));
+        log.info("Checkout two page is ");
         return driver.findElement(PRODUCTS_TITLE).isDisplayed();
+
     }
 
 }

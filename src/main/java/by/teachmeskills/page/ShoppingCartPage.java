@@ -1,9 +1,11 @@
 package by.teachmeskills.page;
 
+
+import lombok.extern.log4j.Log4j2;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-
+@Log4j2
 public class ShoppingCartPage extends BasePage {
     private By SHOPPING_CART_LOCATOR = By.xpath("//span[@class='title']");
     private By CHECKOUT_SHOPPING_CART = By.id("checkout");
@@ -16,6 +18,7 @@ public class ShoppingCartPage extends BasePage {
     }
     public CheckoutPage checkoutShoppingCart() {
         driver.findElement(CHECKOUT_SHOPPING_CART).click();
+        log.info("Checkout shopping cart");
         return new CheckoutPage(driver);
     }
     public boolean isOpened() {
