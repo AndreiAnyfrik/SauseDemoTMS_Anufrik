@@ -1,11 +1,13 @@
 package by.teachmeskills.page;
 
+import lombok.extern.log4j.Log4j2;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
 import java.util.List;
 
+@Log4j2
 public class ProductsPage extends BasePage {
 
     private By PRODUCTS_TITLE = By.xpath("//span[text()='Products']");
@@ -32,6 +34,7 @@ public class ProductsPage extends BasePage {
     }
 
     public WebElement getProductCard(String productName) {
+        log.info("Get Product Card {}", productName);
         String fullProductLocator = String.format(PRODUCT_CARD_LOCATOR, productName);
         return driver.findElement(By.xpath(fullProductLocator));
     }
@@ -47,8 +50,9 @@ public class ProductsPage extends BasePage {
         button.click();
         return this;
     }
+
     public boolean isRemoveButtonDisplayed(String productName) {
-        return driver.findElement(By.xpath(String.format(REMOVE_BUTTON_LOCATOR,productName))).isDisplayed();
+        return driver.findElement(By.xpath(String.format(REMOVE_BUTTON_LOCATOR, productName))).isDisplayed();
     }
 }
 //addProductToCart - productName
