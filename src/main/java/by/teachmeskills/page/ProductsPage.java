@@ -6,6 +6,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
 import java.util.List;
+
 @Log4j2
 public class ProductsPage extends BasePage {
 
@@ -33,7 +34,7 @@ public class ProductsPage extends BasePage {
     }
 
     public WebElement getProductCard(String productName) {
-        log.info("Get Product Card {}",productName);
+        log.info("Get Product Card {}", productName);
         String fullProductLocator = String.format(PRODUCT_CARD_LOCATOR, productName);
         return driver.findElement(By.xpath(fullProductLocator));
     }
@@ -49,8 +50,9 @@ public class ProductsPage extends BasePage {
         button.click();
         return this;
     }
+
     public boolean isRemoveButtonDisplayed(String productName) {
-        return driver.findElement(By.xpath(String.format(REMOVE_BUTTON_LOCATOR,productName))).isDisplayed();
+        return driver.findElement(By.xpath(String.format(REMOVE_BUTTON_LOCATOR, productName))).isDisplayed();
     }
 }
 //addProductToCart - productName

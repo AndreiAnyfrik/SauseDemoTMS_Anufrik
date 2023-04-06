@@ -56,15 +56,17 @@ public class LoginTest extends BaseTest {
         Assert.assertTrue(newOpenPage.isDisplayed(), "New page don't opened");
 
     }
+
     @Test
-    public void enterWithProblemUser(){
+    public void enterWithProblemUser() {
         driver.get("https://www.saucedemo.com");
-        driver.findElement(By.name("user-name")).sendKeys("problem_user1");
+        driver.findElement(By.name("user-name")).sendKeys("problem_user");
         driver.findElement(By.name("password")).sendKeys("secret_sauce");
         driver.findElement(By.name("login-button")).click();
         WebElement newOpenPage = driver.findElement(By.xpath("//span[text( )= 'Products']"));
         Assert.assertTrue(newOpenPage.isDisplayed(), "New page don't opened");
     }
+
     @Test
     public void enterWithPerformanceGlitchUser() {
         driver.get("https://www.saucedemo.com");

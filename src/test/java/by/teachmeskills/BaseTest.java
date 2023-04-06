@@ -41,8 +41,8 @@ public class BaseTest {
         testContext.setAttribute("driver", driver);
     }
 
-        @AfterMethod(alwaysRun = true)
-        public void tearDown() {
+    @AfterMethod(alwaysRun = true)
+    public void tearDown() {
         if (driver != null) {
             driver.quit();
         }

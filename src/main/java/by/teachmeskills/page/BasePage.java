@@ -7,6 +7,7 @@ import org.openqa.selenium.support.ui.ExpectedCondition;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.time.Duration;
+
 @Log4j2
 public class BasePage {
 
@@ -16,7 +17,7 @@ public class BasePage {
     public BasePage(WebDriver driver) {
         this.driver = driver;
         wait = new WebDriverWait(driver, Duration.ofSeconds(10));
-        log.info("Webdriver is {}",driver);
+        log.info("Webdriver is {}", driver);
     }
 
     public void waitForPageLoaded() {

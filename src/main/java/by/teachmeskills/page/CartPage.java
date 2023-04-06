@@ -4,6 +4,7 @@ import lombok.extern.log4j.Log4j2;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+
 @Log4j2
 public class CartPage extends BasePage {
 
@@ -21,7 +22,7 @@ public class CartPage extends BasePage {
 
     public String getProductPrice(String productName) {
         By fullLocator = By.xpath(String.format(PRODUCT_PRICE_LOCATOR, productName));
-        log.info("Get Product price {}",productName);
+        log.info("Get Product price {}", productName);
         return driver.findElement(fullLocator).getText();
 
     }

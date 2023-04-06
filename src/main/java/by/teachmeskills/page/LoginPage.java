@@ -6,6 +6,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import io.qameta.allure.Step;
 import org.testng.annotations.Test;
+
 @Log4j2
 public class LoginPage extends BasePage {
 
@@ -19,6 +20,7 @@ public class LoginPage extends BasePage {
     public LoginPage(WebDriver driver) {
         super(driver);
     }
+
     @Attachment
     public LoginPage open() {
         driver.get("https://www.saucedemo.com/");
@@ -29,9 +31,10 @@ public class LoginPage extends BasePage {
         driver.findElement(USER_NAME).sendKeys(userName);
         driver.findElement(PASSWORD).sendKeys(password);
         driver.findElement(LOGIN_BUTTON).click();
-        log.info("login AS {},{}",userName,userName);
+        log.info("login AS {},{}", userName, userName);
         return null;
     }
+
     @Step("Login as standard user")
     public ProductsPage loginAsStandardUser() {
         loginAs("standard_user", "secret_sauce");

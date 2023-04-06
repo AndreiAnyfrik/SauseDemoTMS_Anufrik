@@ -22,7 +22,7 @@ public class TestListener implements ITestListener {
     @Override
     public void onTestSuccess(ITestResult result) {
         log.info("======================================== FINISHED TEST {} Duration: {}s ========================================", result.getName(),
-                          getExecutionTime(result));
+                getExecutionTime(result));
     }
 
     @Override
@@ -52,7 +52,7 @@ public class TestListener implements ITestListener {
     @Override
     public void onTestFailure(ITestResult result) {
         log.info("======================================== FAILED TEST {} Duration: {}s ========================================", result.getName(),
-                          getExecutionTime(result));
+                getExecutionTime(result));
         takeScreenshot(result);
     }
 

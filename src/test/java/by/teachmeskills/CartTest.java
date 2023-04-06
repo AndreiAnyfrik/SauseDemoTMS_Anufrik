@@ -5,7 +5,6 @@ import org.testng.Assert;
 import org.testng.annotations.Test;
 
 
-
 public class CartTest extends BaseTest {
     @Test
     public void validateProductDescriptionInTheCart() {
@@ -14,10 +13,10 @@ public class CartTest extends BaseTest {
         driver.findElement(By.name("password")).sendKeys("secret_sauce");
         driver.findElement(By.name("login-button")).click();
 
-        final String productName= "Sauce Labs Backpack";
+        final String productName = "Sauce Labs Backpack";
         String productCardLocator = "//div[text()='%s']/ancestor::div[@class='inventory_item']";
         String addToCartButtonLocator = productCardLocator + "//button[text()='Add to cart']";
-        driver.findElement(By.xpath(String.format(addToCartButtonLocator,productName))).click();
+        driver.findElement(By.xpath(String.format(addToCartButtonLocator, productName))).click();
 
         String productPriceLocator = productCardLocator + "//div[@class='inventory_item_price']";
         String expectedprice = driver.findElement(By.xpath(String.format(productPriceLocator, productName))).getText();
